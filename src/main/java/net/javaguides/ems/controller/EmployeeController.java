@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import java.util.List;
 import java.util.ResourceBundle;
 
+@CrossOrigin("*")
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/employees")
@@ -48,4 +49,12 @@ public class EmployeeController {
       return ResponseEntity.ok(employeeDto);
     }
 
+
+    //Build Delete Employee REST API
+    @DeleteMapping("{id}")
+    public  ResponseEntity<String> deleteEmployee(@PathVariable("id") Long employeeId){
+        employeeService.deleteEmployee(employeeId);
+        return  ResponseEntity.ok("Employee deleted successfully!");
+
+    }
 }
